@@ -8,7 +8,7 @@ Investment platform (e-business project): dashboard, **paper-only trading** (Alp
 ## Getting started
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/karolsowi/ebiz-proj.git
 cd ebiz-proj
 docker compose up --build
 ```
