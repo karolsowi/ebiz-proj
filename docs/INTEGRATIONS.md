@@ -55,7 +55,7 @@ User A never reads user B’s keys. Two users can use different Alpaca **paper**
 
 | Feature | Without your API keys | With your API keys |
 |---------|------------------------|-------------------|
-| **Trading** (`/trading`) | Message to add Alpaca keys — **no mock balances or fake orders** | Paper account, sync, place/cancel orders via Alpaca paper API |
+| **Trading** (`/trading`) | Message to add Alpaca keys | Paper account, sync, place/cancel orders via Alpaca paper API |
 | **Reddit** (`/market/reddit`) | Shared posts, charts, analytics from DB | Above + **Fetch New Posts**, auto-fetch, backfill controls |
 | **News** (`/market/news`) | Shared headlines and sentiment charts from DB | Above + **Refresh headlines** (live fetch via your NewsData.io / Finnhub keys) |
 | **Finnhub / Alpha Vantage** | Endpoints return 400 until keys are set | Proxied quotes/news for that user |
