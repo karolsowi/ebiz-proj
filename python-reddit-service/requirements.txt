@@ -1,0 +1,30 @@
+# Core API
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.9
+
+# Reddit API
+praw==7.7.1
+
+# ML / NLP — FinBERT (ProsusAI/finbert)
+# Tested on Python 3.10, CUDA 11.8/12.1 or CPU
+# Windows: plain `pip install torch` is often CPU-only (+cpu); for GPU uninstall torch then:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+torch==2.1.2
+transformers==4.37.2
+accelerate==0.26.1
+tokenizers>=0.15.0
+onnxruntime-gpu==1.17.1
+optimum[onnxruntime]==1.17.1
+
+# Data
+numpy==1.26.4
+scipy==1.12.0
+pandas==2.1.4
+
+# Utilities
+python-dotenv==1.0.1
+pydantic==2.5.3
+aiofiles==23.2.1
+httpx==0.26.0
+requests==2.31.0

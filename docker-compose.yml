@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: inwest
+      POSTGRES_PASSWORD: inwest
+      POSTGRES_DB: inwest
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inwest -d inwest"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    # Optional backend/.env: override server vars or seed demo-user keys (keys:import-env). Per-user keys live in DB — see docs/INTEGRATIONS.md.
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      LOG_LEVEL: debug
+      DATABASE_URL: postgresql://inwest:inwest@postgres:5432/inwest
+      JWT_SECRET: dev-jwt-secret-change-in-production-min-32-chars
+      ENCRYPTION_KEY: inwest-dev-encryption-key-32ch!!
+      CORS_ORIGINS: http://localhost:5175,http://127.0.0.1:5175
+      ALPACA_ORDER_SYNC_USER_EMAIL: demo@demo.com
+      SCHEDULER_ENABLED: "false"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5175:5175"
+    environment:
+      # Empty → browser calls same-origin /api (proxied to backend). Avoids CORS split-brain.
+      VITE_API_URL: ""
+      VITE_PROXY_TARGET: http://backend:3001
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

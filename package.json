@@ -1,0 +1,30 @@
+{
+  "name": "inwest-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "setup": "node setup.js",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "docs:api": "cd backend && npm run docs:api",
+    "test": "cd backend && npm test",
+    "env:setup": "cd backend && npm run env:setup",
+    "db:setup": "cd backend && npm run db:setup",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "db:seed": "cd backend && npm run db:seed",
+    "db:check": "cd backend && npm run db:check",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
