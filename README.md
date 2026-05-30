@@ -5,6 +5,40 @@ Investment platform (e-business project): dashboard, **paper-only trading** (Alp
 - **Paper trading only** in the current setup — no live brokerage. See [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md#paper-trading-only-current-setup).
 - Each user’s API keys are stored **encrypted in PostgreSQL**; new users without keys see prompts on Trading, while Reddit/News show **shared** stored data without fetch buttons. See [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md#credentials-env-vs-per-user-keys).
 
+## Screenshots
+
+### Dashboard
+
+![Dashboard overview](docs/screenshots/dashboard1.png)
+
+![Dashboard — portfolio and watchlist](docs/screenshots/dashboard2.png)
+
+### Paper trading
+
+![Trading — place orders](docs/screenshots/trading.png)
+
+![Trading — order history](docs/screenshots/trading-history.png)
+
+### Market data
+
+![Market data overview](docs/screenshots/market-data-overview.png)
+
+### News & sentiment
+
+![News feed](docs/screenshots/news-feed.png)
+
+![News sentiment analysis](docs/screenshots/news-sentiment.png)
+
+### Reddit sentiment
+
+![Reddit feed](docs/screenshots/reddit-feed.png)
+
+![Reddit sentiment analysis](docs/screenshots/reddit-sentiment.png)
+
+### Account settings
+
+![API keys and integrations](docs/screenshots/api-settings.png)
+
 ## Getting started
 
 ```bash
